@@ -11,7 +11,7 @@ public class project {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JButton btn = new JButton("Click!");
-        JButton btn1 = new JButton("skrskr222skr");
+        JButton btn1 = new JButton("skrskr333skr");
         MyButtonListener mblistener = new MyButtonListener();
         btn.addActionListener(mblistener);
         btn.setLocation(250, 100);
