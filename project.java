@@ -11,13 +11,13 @@ public class project {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JButton btn = new JButton("Click me!");
-        JButton btn1 = new JButton("skrskhfhjhjskr");
+        JButton btn1 = new JButton("skrskr111skr");
         MyButtonListener mblistener = new MyButtonListener();
         btn.addActionListener(mblistener);
         btn.setLocation(250, 100);
         btn.setSize(200, 50);
 
-        JLabel lb = new JLabel("Welcome to the new world!");
+        JLabel lb = new JLabel("Welcome to the world!");
         lb.setLocation(100, 100);
         lb.setSize(200, 50);
 
