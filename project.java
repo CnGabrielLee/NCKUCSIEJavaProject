@@ -10,8 +10,13 @@ public class project {
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+<<<<<<< HEAD
         JButton btn = new JButton("Click me!");
         JButton btn1 = new JButton("skrskr55555555skr");
+=======
+        JButton btn = new JButton("Click!012");
+        JButton btn1 = new JButton("skrskr333skr");
+>>>>>>> d2d2ae1 (update tttt)
         MyButtonListener mblistener = new MyButtonListener();
         btn.addActionListener(mblistener);
         btn.setLocation(250, 100);
