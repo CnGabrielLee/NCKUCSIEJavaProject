@@ -17,7 +17,7 @@ public class project {
         btn.setLocation(250, 100);
         btn.setSize(200, 50);
 
-        JLabel lb = new JLabel("Welcome to the world!");
+        JLabel lb = new JLabel("Welcome to the new world!");
         lb.setLocation(100, 100);
         lb.setSize(200, 50);
 
