@@ -1,16 +1,17 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class project {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
         JButton btn = new JButton("Click me!");
+        JButton btn1 = new JButton("Click me!");
         MyButtonListener mblistener = new MyButtonListener();
         btn.addActionListener(mblistener);
         btn.setLocation(250, 100);
