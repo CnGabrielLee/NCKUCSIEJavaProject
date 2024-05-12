@@ -10,7 +10,7 @@ public class project {
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        JButton btn = new JButton("Click me!");
+        JButton btn = new JButton("Click!");
         JButton btn1 = new JButton("skrskr222skr");
         MyButtonListener mblistener = new MyButtonListener();
         btn.addActionListener(mblistener);
