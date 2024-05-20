@@ -1,4 +1,4 @@
-package model.GameObject;
+package model.gameobject;
 
 public abstract class SuperObject {
     private int x;
