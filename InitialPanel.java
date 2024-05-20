@@ -1,194 +1,180 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import java.awt.Image;
-
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLayeredPane;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class InitialPanel extends JPanel {
     public static int playerIndex;
     private JLabel startLabel;
-    private JLabel introLabel;
-    private JButton gameSatrtButton;
-    private JButton gameMiddleBtn;
-    private JButton gameAdvancedBtn;
+    private JLabel playerLabel;
     private JButton introButton;
-    private JLabel selectPlayer;
     private JButton selectButton;
-    private JButton changePlayer;
     private JButton ensureButton;
-    ImageIcon img;
+    private JButton changeButton;
+    private JButton startButton;
+    private JLayeredPane layeredPane;
+    private ImageIcon playerIcon; // Declare playerIcon as a class-level variable
 
-    public InitialPanel(){
+    public InitialPanel() {
         init();
     }
 
-    private void init(){
+    private void init() {
         playerIndex = 1;
-        
+
+        // Create a layered pane
+        layeredPane = new JLayeredPane();
+        layeredPane.setBounds(0, 0, 800, 600);
+
+        // Load and scale the background image
         ImageIcon startBg = new ImageIcon("images/str_bg.jpeg");
-        ImageIcon introducebuttIcon = new ImageIcon("images/introduce.png");
         Image img = startBg.getImage();
-        Image intro_butt_img = introducebuttIcon.getImage();
         Image scaledImg = img.getScaledInstance(800, 600, Image.SCALE_SMOOTH); // Adjust the size as needed
-        Image intro_scaledImg = intro_butt_img.getScaledInstance(200, 100, Image.SCALE_SMOOTH); // Adjust the size as needed
-        
-        //startBg.setImage(startBg.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
-        /*ImageIcon intro = ResourceLoader.getResourceLoader().getImageInfo().get("introduce");
-        intro.setImage(intro.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));*/
         startBg = new ImageIcon(scaledImg);
+
+        // Create JLabel with the background image
         startLabel = new JLabel(startBg);
         startLabel.setBounds(0, 0, 800, 600); // Adjust the bounds as needed
         startLabel.setVisible(true);
+
+        // Load and scale the intro button image
+        ImageIcon introducebuttIcon = new ImageIcon("images/introduce.png");
+        Image intro_butt_img = introducebuttIcon.getImage();
+        Image intro_scaledImg = intro_butt_img.getScaledInstance(100, 50, Image.SCALE_SMOOTH); // Adjust the size as needed
         introducebuttIcon = new ImageIcon(intro_scaledImg);
+
+        // Create JButton with the intro button image
         introButton = new JButton(introducebuttIcon);
-        introButton .setBounds(0, 0, 800, 600); // Adjust the bounds as needed
-        introButton.setVisible(true);
-        //introLabel = new JLabel(intro);
-        //startLabel.setBounds(0,0, width, height);
-        //introLabel.setBounds(width/2, height/3,400,400);
-        //introLabel.setVisible(false);
-
-       /*  img = ResourceLoader.getResourceLoader().getImageInfo().get("player" + String.valueOf(playerIndex)+"img");
-        img.setImage(img.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-        selectPlayer = new JLabel(img);
-        selectPlayer.setBounds(width/2, height/3, 200, 200);
-        selectPlayer.setVisible(false);
-
-        changePlayer = new JButton();
-        ImageIcon change = ResourceLoader.getResourceLoader().getImageInfo().get("change");
-        change.setImage(change.getImage().getScaledInstance(160, 50, Image.SCALE_SMOOTH));
-        changePlayer.setIcon(change);
-        changePlayer.setBorderPainted(false);
-        changePlayer.setContentAreaFilled(false);
-        changePlayer.setFocusPainted(false);
-        changePlayer.setBounds(width/2-60, height/3+200, 160, 50);
-        changePlayer.addActionListener(e -> changePlayerActionPerformed(e));
-        changePlayer.setVisible(false);
-
-
-        ensureButton = new JButton();
-        ImageIcon ensure = ResourceLoader.getResourceLoader().getImageInfo().get("ensure");
-        ensure.setImage(ensure.getImage().getScaledInstance(160,50, Image.SCALE_SMOOTH));
-        ensureButton.setIcon(ensure);
-        ensureButton.setBorderPainted(false);
-        ensureButton.setFocusPainted(false);
-        ensureButton.setContentAreaFilled(false);
-        ensureButton.setBounds(width/2+110, height/3+200, 160, 50);
-        ensureButton.setVisible(false);
-        ensureButton.addActionListener(e -> ensureButtonActionPerformed(e));
-
-        gameSatrtButton = new JButton();
-        gameSatrtButton.setIcon(ResourceLoader.getResourceLoader().getImageInfo().get("primaryBtn"));
-        gameSatrtButton.setBounds(width/6, height/3, 240, 80);
-        gameSatrtButton.setBorderPainted(false);
-        gameSatrtButton.setFocusPainted(false);
-        gameSatrtButton.setContentAreaFilled(false);
-        gameSatrtButton.addActionListener(e -> gameStartActionPerformed(e));
-
-        gameMiddleBtn = new JButton();
-        gameMiddleBtn.setIcon(ResourceLoader.getResourceLoader().getImageInfo().get("middleBtn"));
-        gameMiddleBtn.setBounds(width/6, height/3 + 100, 240, 80);
-        gameMiddleBtn.setBorderPainted(false);
-        gameMiddleBtn.setFocusPainted(false);
-        gameMiddleBtn.setContentAreaFilled(false);
-        gameMiddleBtn.addActionListener(e -> gameMiddleBtnActionPerformed(e));
-
-        gameAdvancedBtn = new JButton();
-        gameAdvancedBtn.setIcon(ResourceLoader.getResourceLoader().getImageInfo().get("advancedBtn"));
-        gameAdvancedBtn.setBounds(width/6, height/3 + 200, 240, 80);
-        gameAdvancedBtn.setBorderPainted(false);
-        gameAdvancedBtn.setFocusPainted(false);
-        gameAdvancedBtn.setContentAreaFilled(false);
-        gameAdvancedBtn.addActionListener(e -> gameAdvancedBtnActionPerformed(e));
-*/
-        //introButton = new JButton();
-        //introButton.setIcon(ResourceLoader.getResourceLoader().getImageInfo().get("introBtn"));
-        //introButton.setBounds(width/6, height/3+300,240,80);
+        introButton.setBounds(200, 250, 200, 100); // Adjust the bounds as needed
         introButton.setBorderPainted(false);
         introButton.setFocusPainted(false);
         introButton.setContentAreaFilled(false);
-        //introButton.addActionListener(e -> introBtnActionPerformed(e));
+        introButton.setVisible(true);
 
-        /*selectButton = new JButton();
-        selectButton.setIcon(ResourceLoader.getResourceLoader().getImageInfo().get("selectBtn"));
-        selectButton.setBounds(width/6, height/3+400, 240, 80);
+        // Load and scale the select button image
+        ImageIcon selectbuttIcon = new ImageIcon("images/select.png");
+        Image select_butt_img = selectbuttIcon.getImage();
+        Image select_scaledImg = select_butt_img.getScaledInstance(100, 50, Image.SCALE_SMOOTH); // Adjust the size as needed
+        selectbuttIcon = new ImageIcon(select_scaledImg);
+
+        // Create JButton with the select button image
+        selectButton = new JButton(selectbuttIcon);
+        selectButton.setBounds(200, 400, 200, 100); // Adjust the bounds as needed
         selectButton.setBorderPainted(false);
         selectButton.setFocusPainted(false);
         selectButton.setContentAreaFilled(false);
-        selectButton.addActionListener(e -> selectButtonActionPerformed(e));
+        selectButton.setVisible(true);
+        selectButton.addActionListener(e -> selectButtonActionPerformed());
 
-*/
-        
-        /*this.add(gameSatrtButton);
-        this.add(gameMiddleBtn);
-        this.add(gameAdvancedBtn);
-        this.add(introButton);
-        this.add(selectButton);
-        this.add(selectPlayer);
-        this.add(changePlayer);
-        this.add(ensureButton);
-        this.add(introLabel);*/
+        // Load and scale the change button image
+        ImageIcon changebuttIcon = new ImageIcon("images/change.png");
+        Image change_butt_img = changebuttIcon.getImage();
+        Image change_scaledImg = change_butt_img.getScaledInstance(100, 50, Image.SCALE_SMOOTH); // Adjust the size as needed
+        changebuttIcon = new ImageIcon(change_scaledImg);
+
+        // Create JButton with the change button image
+        changeButton = new JButton(changebuttIcon);
+        changeButton.setBounds(450, 400, 200, 100); // Adjust the bounds as needed
+        changeButton.setBorderPainted(false);
+        changeButton.setFocusPainted(false);
+        changeButton.setContentAreaFilled(false);
+        changeButton.setVisible(false); // Initially hidden
+        changeButton.addActionListener(e -> changePlayerActionPerformed());
+
+        // Load and scale the ensure button image
+        ImageIcon ensurebuttIcon = new ImageIcon("images/check.png");
+        Image ensure_butt_img = ensurebuttIcon.getImage();
+        Image ensure_scaledImg = ensure_butt_img.getScaledInstance(100, 50, Image.SCALE_SMOOTH); // Adjust the size as needed
+        ensurebuttIcon = new ImageIcon(ensure_scaledImg);
+
+        // Create JButton with the ensure button image
+        ensureButton = new JButton(ensurebuttIcon);
+        ensureButton.setBounds(650, 400, 200, 100); // Adjust the bounds as needed
+        ensureButton.setBorderPainted(false);
+        ensureButton.setFocusPainted(false);
+        ensureButton.setContentAreaFilled(false);
+        ensureButton.setVisible(false); // Initially hidden
+        ensureButton.addActionListener(e -> ensureButtonActionPerformed());
+        // Load and scale the ensure button image
+        ImageIcon startbuttIcon = new ImageIcon("images/start-button.png");
+        Image start_butt_img = startbuttIcon.getImage();
+        Image start_scaledImg = start_butt_img.getScaledInstance(100, 50, Image.SCALE_SMOOTH); // Adjust the size as needed
+        startbuttIcon = new ImageIcon(start_scaledImg);
+
+        // Create JButton with the ensure button image
+        startButton = new JButton(startbuttIcon);
+        startButton.setBounds(200, 150, 200, 100); // Adjust the bounds as needed
+        startButton.setBorderPainted(false);
+        startButton.setFocusPainted(false);
+        startButton.setContentAreaFilled(false);
+        startButton.setVisible(true); // Initially hidden
+        startButton.addActionListener(e -> startButtonActionPerformed());
+        // Load and scale the player image
+        playerIcon = new ImageIcon("images/character1.png");
+        Image player_img = playerIcon.getImage();
+        Image player_scaledImg = player_img.getScaledInstance(200, 100, Image.SCALE_SMOOTH); // Adjust the size as needed
+        playerIcon = new ImageIcon(player_scaledImg);
+        playerLabel = new JLabel(playerIcon);
+        playerLabel.setBounds(500, 200, 200, 100); // Adjust the bounds as needed
+        playerLabel.setVisible(false); // Initially hidden
+
+        // Add components to the layered pane
+        layeredPane.add(startLabel, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(introButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(selectButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(changeButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(ensureButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(playerLabel, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(startButton, JLayeredPane.PALETTE_LAYER);
+        // Set layout and add components
         this.setLayout(null);
-        this.add(startLabel);
-        this.add(introButton);
+        this.add(layeredPane);
+
+        // Set panel properties
         this.setVisible(true);
         this.setOpaque(true);
     }
-    /*private void gameStartActionPerformed(ActionEvent e){
-        StartGame.startGame("Simple");
+
+    private void selectButtonActionPerformed() {
+        changeButton.setVisible(true);
+        ensureButton.setVisible(true);
+        playerLabel.setVisible(true);
+        layeredPane.repaint();
+        layeredPane.revalidate();
     }
 
-    private void gameMiddleBtnActionPerformed(ActionEvent e){
-        System.out.println("middle");
-        StartGame.startGame("Middle");
-    }
-
-    private void gameAdvancedBtnActionPerformed(ActionEvent e){
-        StartGame.startGame("Advanced");
-    }
-    */
-    /*private void introBtnActionPerformed(ActionEvent e){
-        if(introLabel.isVisible()){
-            introLabel.setVisible(false);
-        }else {
-            introLabel.setVisible(true);
-        }
-    }
-
-    private void selectButtonActionPerformed(ActionEvent e){
-        if(changePlayer.isVisible()){
-            changePlayer.setVisible(false);
-        }else {
-            changePlayer.setVisible(true);
-        }
-        if(ensureButton.isVisible()){
-            ensureButton.setVisible(false);
-        }else {
-            ensureButton.setVisible(true);
-        }
-        if(selectPlayer.isVisible()){
-            selectPlayer.setVisible(false);
-        }else {
-            selectPlayer.setVisible(true);
-        }
-    }
-
-    private void changePlayerActionPerformed(ActionEvent e){
+    private void changePlayerActionPerformed() {
         playerIndex = playerIndex + 1;
-        if(playerIndex > 2){
+        if (playerIndex > 2) {
             playerIndex = 1;
         }
-       // img = ResourceLoader.getResourceLoader().getImageInfo().get("player" + String.valueOf(playerIndex)+"img");
-        img.setImage(img.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-        selectPlayer.setIcon(img);
+        // Change player image
+        String playerImagePath = "images/character" + playerIndex + ".png";
+        ImageIcon newPlayerIcon = new ImageIcon(playerImagePath);
+        Image player_img = newPlayerIcon.getImage();
+        Image player_scaledImg = player_img.getScaledInstance(200, 100, Image.SCALE_SMOOTH); // Adjust the size as needed
+        newPlayerIcon.setImage(player_scaledImg);
+        playerIcon.setImage(player_scaledImg); // Update the existing ImageIcon
+        playerLabel.repaint();
+        layeredPane.repaint();
+        layeredPane.revalidate();
     }
 
-    private void ensureButtonActionPerformed(ActionEvent e){
-        changePlayer.setVisible(false);
+    private void ensureButtonActionPerformed() {
+        changeButton.setVisible(false);
         ensureButton.setVisible(false);
-        selectPlayer.setVisible(false);
-    }*/
+        playerLabel.setVisible(false);
+        layeredPane.repaint();
+        layeredPane.revalidate();
+    }
+    private void startButtonActionPerformed() {
+        // Switch to GamePanel
+        GameFrame parentFrame = (GameFrame) SwingUtilities.getWindowAncestor(this);
+        parentFrame.switchToGamePanel();
+    }
 }

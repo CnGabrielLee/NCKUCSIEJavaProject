@@ -4,6 +4,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import java.awt.CardLayout;
+
+import javax.swing.JPanel;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -12,7 +15,9 @@ import javax.swing.ImageIcon;
 public class GameFrame extends JFrame {
     //private JPanel contentPane;
     private InitialPanel initialPanel;
-    //private GamePanel gamePanel;
+    private GamePanel gamePanel;
+    private JPanel mainPanel;
+    private CardLayout cardLayout;
     //private OverPanel overPanel;
     //private static GameThread gameThread;
 
@@ -33,13 +38,23 @@ public class GameFrame extends JFrame {
         this.contentPane = new JPanel();
         this.setContentPane(contentPane);
         this.contentPane.setLayout(cardLayout);*/
-        this.initialPanel = new InitialPanel();
-        this.add(initialPanel);
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+
+        initialPanel = new InitialPanel();
+        gamePanel = new GamePanel();
+
+        mainPanel.add(initialPanel, "InitialPanel");
+        mainPanel.add(gamePanel, "GamePanel");
+        
+        this.add(mainPanel);
+
+        this.setVisible(true);
+        
         /*this.contentPane.add("start",startPanel);
         this.overPanel = new OverPanel();
         this.contentPane.add("over", overPanel);
         ((CardLayout)this.contentPane.getLayout()).show(contentPane,"start");*/
-        this.setVisible(true);
     }
 
     /*public void startGame(String map){
@@ -63,5 +78,8 @@ public class GameFrame extends JFrame {
     public static void main(String[] args) {
         // 创建一个 GameFrame 实例并显示
         SwingUtilities.invokeLater(GameFrame::new);
+    }
+    public void switchToGamePanel() {
+        cardLayout.show(mainPanel, "GamePanel");
     }
 }
