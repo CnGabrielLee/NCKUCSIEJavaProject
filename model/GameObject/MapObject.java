@@ -14,7 +14,7 @@ public class MapObject extends SuperObject{
 
     }
     public void showObject(Graphics g){
-        g.drawImage(img.getImage(), sx1, sy1, null);
+        g.drawImage(img.getImage(), getx(), gety(), getx()+getw(), gety()+geth(), sx1, sy1, sx2, sy2, null);
     }
     public ImageIcon getimg(){
         return img;

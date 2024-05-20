@@ -12,4 +12,8 @@ public abstract class SuperObject {
         this.width = width;
         this.height = height;
     }
+    public int getx() { return x; }
+    public int gety() { return y; }
+    public int geth() { return height;}
+    public int getw() { return width;}
 }
