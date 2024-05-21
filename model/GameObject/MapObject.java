@@ -19,4 +19,7 @@ public class MapObject extends SuperObject{
     public ImageIcon getimg(){
         return img;
     }
+    public void setimg(ImageIcon img){
+        this.img = img;
+    }
 }
