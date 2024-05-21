@@ -39,10 +39,8 @@ public class GamePanel extends JPanel {
                 mapPanel.add(tiles[row][col]);
             }
         }
-
         // Add the map panel to the GamePanel
         add(mapPanel);
-
         // Set panel properties
         setVisible(true);
     }
