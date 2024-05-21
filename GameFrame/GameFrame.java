@@ -3,7 +3,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-
 public class GameFrame extends JFrame {
     //private JPanel contentPane;
     private InitialPanel initialPanel;
