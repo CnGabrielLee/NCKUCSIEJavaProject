@@ -1,15 +1,7 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 import java.awt.CardLayout;
-
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 
 public class GameFrame extends JFrame {
