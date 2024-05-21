@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import main.StartGame;
+
 
 public class GamePanel extends JPanel {
     private Tile[][] tiles;
@@ -145,11 +147,16 @@ public class GamePanel extends JPanel {
     }
 
     private boolean isBoxAt(int row, int col) {
+        String tileIcon = tiles[row][col].getIcon().toString();
+        if (tileIcon.contains("box.png") || tileIcon.contains("blue_house.png")) {
+            return true;
+        }
+
         int[][] boxPositions = {
             {2, 2}, {2, 4}, {2, 6},
             {4, 2}, {4, 4}, {4, 6},
             {6, 2}, {6, 4}, {6, 6},
-            {8, 2}, {8, 4}, {8, 6}
+            {8, 2}, {8, 4}, {8, 6},
         };
         for (int[] pos : boxPositions) {
             if (pos[0] == row && pos[1] == col) {
@@ -158,4 +165,5 @@ public class GamePanel extends JPanel {
         }
         return false;
     }
+    
 }

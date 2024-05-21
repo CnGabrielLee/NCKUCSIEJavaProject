@@ -1,3 +1,5 @@
+package GameFrame;
+
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -74,4 +76,5 @@ public class GameFrame extends JFrame {
     public void switchToGamePanel() {
         cardLayout.show(mainPanel, "GamePanel");
     }
+    
 }
